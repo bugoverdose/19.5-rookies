@@ -1,12 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNumber, IsString } from 'class-validator';
 
 export type validGrade = 1 | 2 | 3;
 export type validName = string;
 
 export class CreateStudentRequestDto {
   @ApiProperty({ description: '이름', example: '김와플', required: true })
+  @IsString()
   name: string;
   @ApiProperty({ description: '학년', example: 2, required: true })
+  @IsNumber()
   grade: number;
   @ApiProperty({
     description: '프로필 사진 링크',
